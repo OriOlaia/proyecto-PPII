@@ -9,7 +9,6 @@
         $apellido = $_POST['apellido'];
         $email = $_POST['email'];
         $password = $_POST['contrasena'];
-        $reppassword = $_POST['repcontra'];
 
         $query = $connection->prepare("SELECT * FROM register WHERE EMAIL=:email");
         $query->bindParam("email", $email, PDO::PARAM_STR);
@@ -20,12 +19,11 @@
         }
 
         if ($query->rowCount() == 0) {
-            $query = $connection->prepare("INSERT INTO register (nombre,apellido,email,contrasena,repcontra) VALUES (:nombre,:apellido,:email,:contrasena, :repcontra)");
+            $query = $connection->prepare("INSERT INTO register (nombre,apellido,email,contrasena) VALUES (:nombre,:apellido,:email,:contrasena)");
             $query->bindParam(":nombre", $nombre, PDO::PARAM_STR);
             $query->bindParam(":apellido", $apellido, PDO::PARAM_STR);
             $query->bindParam(":email", $email, PDO::PARAM_STR);
             $query->bindParam(":contrasena", $password, PDO::PARAM_STR);
-            $query->bindParam(":repcontra", $reppassword, PDO::PARAM_STR);
             $result = $query->execute();
 
             if ($result) {
@@ -35,20 +33,6 @@
             }
         }
     }
-    
-/*
-    require_once "config.php";
-
-    $nombre = $apellido = $email = $password = $reppassword = "";
-    $nombre_err  = $apellido_err = $email_err = $password_err = $reppassword_err = "";
-
-    if(empty(trim($_POST["email"]))){
-
-    }
-*/
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +60,6 @@
             <input type="text" name="apellido" pattern="[a-zA-Z0-9]+" required>
             <input type="text" name="email" required>
             <input type="password" name="contrasena" required>
-            <input type="password" name="repcontra" required>
             <button type="submit" name="enviar" value="enviar">Registrar</button>
         
         </form>
