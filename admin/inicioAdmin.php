@@ -39,8 +39,7 @@
         
         <h2>Buenas! Que tal Admin?</h2>
         <p>Hola frikis, esta página van a encontrar información sobre videojuegos de todo tipo, contiene información sobre: descripción, requisitos, guías, trucos y donde conseguir el juego.</p>
-        <a href="login.php" class="nes-btn">Iniciar Sesion</a>
-        <a href="register.php" class="nes-btn">Registrar</a>
+        <a href="logout.php" class="nes-btn">Cerrar Sesion</a>
     </div>
     <footer>
         <h3>Hecho por Oriana Olaia</h3>
